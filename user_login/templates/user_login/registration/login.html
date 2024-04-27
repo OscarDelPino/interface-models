@@ -22,7 +22,7 @@
         {% endif %}
     {% endif %}
 
-    <form method="post" action="{% url 'user_login:index' %}">
+    <form method="post" action="{% url 'user_login:login' %}">
         {% csrf_token %}
         <table>
             <tr>
@@ -39,6 +39,8 @@
     </form>
 
     {# Asume que configura la vista de restablecimiento de contraseña en su URLconf #}
+
+    <p>{{ form.site }}</p>
 
 </body>
 

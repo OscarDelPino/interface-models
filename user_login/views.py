@@ -4,8 +4,9 @@ from django.contrib.auth import views as auth_views
 
 # Create your views here.
 
-class LoginView(auth_views.LoginView):
-    template_name = "user_login/login/login.html"
+class CustomLoginView(auth_views.LoginView):
+    template_name = "user_login/registration/login.html"
+    next_page = "user_login:index"
     
 
 
