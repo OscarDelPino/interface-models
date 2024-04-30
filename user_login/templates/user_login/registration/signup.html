@@ -1,0 +1,61 @@
+{% extends 'user_login/index.html' %}
+
+{% block head %}
+    <title>Signup</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Signup</h1>
+
+    <form action="{% url 'user_login:signup' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ form.first_name.label_tag }}</td>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.last_name.label_tag }}</td>
+                <td>{{ form.last_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.age.label_tag }}</td>
+                <td>{{ form.age }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.country.label_tag }}</td>
+                <td>{{ form.country }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.city.label_tag }}</td>
+                <td>{{ form.city }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.company.label_tag }}</td>
+                <td>{{ form.company }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.position.label_tag }}</td>
+                <td>{{ form.position }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.label_tag }}</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password1.label_tag }}</td>
+                <td>{{ form.password1 }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password2.label_tag }}</td>
+                <td>{{ form.password2 }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="signup">
+    </form>
+
+{% endblock %}

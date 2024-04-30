@@ -1,26 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Login</title>
+    {% block head %}
+
+    {% endblock %}
     
 </head>
 <body>
-    <h1>Welcome to User Login</h1>
-    
-    <p>{{ user }}</p>
-    <p>{{ user.is_authenticated }}</p>
-    <p>{{ user.username }}</p>
-    <p>{{ user.email }}</p>
-    <p>{{ user.first_name }}</p>
-    <p>{{ user.last_name }}</p>
-    <p>{{ user.date_joined }}</p>
-    <p>{{ user.last_login }}</p>
-    <p>{{ user.is_active }}</p>
-    <p>{{ user.is_staff }}</p>
-    <p>{{ user.is_superuser }}</p>
-    <p>{{ user.groups }}</p>
-    <p>{{ user.user_permissions }}</p>
-    <p>{{ user.password }}</p>
+
+    {% block content %}
+
+    {% endblock %}
     
 </body>
 </html>
