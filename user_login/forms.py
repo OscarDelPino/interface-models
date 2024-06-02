@@ -9,11 +9,11 @@ class CustomUserRegisterForm(UserCreationForm):
     last_name = forms.CharField(max_length=100, required=True)
     password1 = forms.PasswordInput()
     password2 = forms.PasswordInput()
-    # age = forms.IntegerField(required=True)
-    # country = forms.CharField(max_length=100, required=False)
-    # city = forms.CharField(max_length=100, required=False)
-    # company = forms.CharField(max_length=100, required=False)
-    # position = forms.CharField(max_length=100, required=False)
+    age = forms.IntegerField(required=True)
+    country = forms.CharField(max_length=100, required=False)
+    city = forms.CharField(max_length=100, required=False)
+    company = forms.CharField(max_length=100, required=False)
+    position = forms.CharField(max_length=100, required=False)
     
     class Meta:
         model = User

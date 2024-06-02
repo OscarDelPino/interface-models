@@ -5,6 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import generic
 
 from .forms import CustomUserRegisterForm
+from .models import UserProfile
 
 # Create your views here.
 class CustomSignupView(generic.CreateView):
@@ -12,6 +13,17 @@ class CustomSignupView(generic.CreateView):
     form_class = CustomUserRegisterForm
     # fields = ['name', 'lastname', 'username', 'email', 'company', 'pets', 'password1', 'password2']
     success_url = reverse_lazy('user_login:login')
+
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        response = super().form_valid(form)
+        age = form.cleaned_data['age']
+        country = form.cleaned_data['country']
+        city = form.cleaned_data['city']
+        company = form.cleaned_data['company']
+        position = form.cleaned_data['position']
+        UserProfile.objects.create(user=self.object, age=age, country=country, city=city, company=company, position=position)
+        return response
 
 class CustomLoginView(auth_views.LoginView):
     template_name = "user_login/registration/login.html"
@@ -33,6 +45,7 @@ class CustomLogoutView(auth_views.LogoutView):
 
 def index(request):
     return render(request, 'user_login/index.html')
+
 
 def profile(request):
     print(request.user.is_authenticated)
