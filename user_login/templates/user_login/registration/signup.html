@@ -13,49 +13,61 @@
             <tr>
                 <td>{{ form.first_name.label_tag }}</td>
                 <td>{{ form.first_name }}</td>
+                <td>{{ form.first_name.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.last_name.label_tag }}</td>
                 <td>{{ form.last_name }}</td>
+                <td>{{ form.last_name.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.age.label_tag }}</td>
                 <td>{{ form.age }}</td>
+                <td>{{ form.age.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.country.label_tag }}</td>
                 <td>{{ form.country }}</td>
+                <td>{{ form.country.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.city.label_tag }}</td>
                 <td>{{ form.city }}</td>
+                <td>{{ form.city.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.company.label_tag }}</td>
                 <td>{{ form.company }}</td>
+                <td>{{ form.company.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.position.label_tag }}</td>
                 <td>{{ form.position }}</td>
+                <td>{{ form.position.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.username.label_tag }}</td>
                 <td>{{ form.username }}</td>
+                <td>{{ form.username.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.email.label_tag }}</td>
                 <td>{{ form.email }}</td>
+                <td>{{ form.email.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.password1.label_tag }}</td>
                 <td>{{ form.password1 }}</td>
+                <td>{{ form.password1.errors }}</td>
             </tr>
             <tr>
                 <td>{{ form.password2.label_tag }}</td>
                 <td>{{ form.password2 }}</td>
+                <td>{{ form.password2.errors }}</td>
             </tr>
         </table>
         <input type="submit" value="signup">
+        
     </form>
 
 {% endblock %}

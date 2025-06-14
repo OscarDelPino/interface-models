@@ -23,6 +23,7 @@ class CustomSignupView(generic.CreateView):
         company = form.cleaned_data['company']
         position = form.cleaned_data['position']
         UserProfile.objects.create(user=self.object, age=age, country=country, city=city, company=company, position=position)
+        print(response)
         return response
 
 class CustomLoginView(auth_views.LoginView):
@@ -42,16 +43,17 @@ class CustomLoginView(auth_views.LoginView):
 class CustomLogoutView(auth_views.LogoutView):
     template_name = "user_login/registration/logged_out.html"
 
+class CustomPasswordChangeView(auth_views.PasswordChangeView):
+    template_name = "user_login/registration/password_change.html"
+    success_url = reverse_lazy('user_login:login')
+    
+    def form_valid(self, form):
+        return super().form_valid(form)
 
 def index(request):
     return render(request, 'user_login/index.html')
 
 
 def profile(request):
-    print(request.user.is_authenticated)
-    print(request.user)
-    print(request.user.is_superuser)
-    print(request.META['HTTP_USER_AGENT'])
-    print(request.META['REMOTE_ADDR'])
-    print(request.META['SERVER_NAME'])
+    
     return render(request, 'user_login/perfil/user_data.html')
