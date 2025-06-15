@@ -3,9 +3,12 @@ from django.shortcuts import render
 from django.contrib.auth import views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.views import generic
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required 
 
 from .forms import CustomUserRegisterForm
 from .models import UserProfile
+
 
 # Create your views here.
 class CustomSignupView(generic.CreateView):
@@ -43,6 +46,7 @@ class CustomLoginView(auth_views.LoginView):
 class CustomLogoutView(auth_views.LogoutView):
     template_name = "user_login/registration/logged_out.html"
 
+@method_decorator(login_required(login_url='user_login:login'), name='dispatch')
 class CustomPasswordChangeView(auth_views.PasswordChangeView):
     template_name = "user_login/registration/password_change.html"
     success_url = reverse_lazy('user_login:login')

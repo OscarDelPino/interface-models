@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    "polls.apps.PollsConfig",
+    "crm_test.apps.CrmTestConfig",
     "user_login.apps.UserLoginConfig",
     "django.contrib.admin",
     "django.contrib.auth",
