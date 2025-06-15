@@ -1,4 +1,3 @@
-from django.http.response import HttpResponse as HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import views as auth_views
 from django.urls import reverse, reverse_lazy
