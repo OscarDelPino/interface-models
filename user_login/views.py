@@ -5,14 +5,14 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 
-from .forms import CustomUserRegisterForm
+#from .forms import CustomUserRegisterForm
 from .models import UserProfile
 
 
 # Create your views here.
 class CustomSignupView(generic.CreateView):
     template_name = "user_login/registration/signup.html"
-    form_class = CustomUserRegisterForm
+    #form_class = CustomUserRegisterForm
     # fields = ['name', 'lastname', 'username', 'email', 'company', 'pets', 'password1', 'password2']
     success_url = reverse_lazy('user_login:login')
 
