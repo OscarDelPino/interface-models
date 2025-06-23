@@ -5,14 +5,14 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 
-#from .forms import CustomUserRegisterForm
+from .forms import CustomUserRegisterForm
 from .models import UserProfile
 
 
 # Create your views here.
 class CustomSignupView(generic.CreateView):
     template_name = "user_login/registration/signup.html"
-    #form_class = CustomUserRegisterForm
+    form_class = CustomUserRegisterForm
     # fields = ['name', 'lastname', 'username', 'email', 'company', 'pets', 'password1', 'password2']
     success_url = reverse_lazy('user_login:login')
 
@@ -41,7 +41,8 @@ class CustomLoginView(auth_views.LoginView):
             return reverse(admin_page)
         
         return self.get_default_redirect_url()
-
+    
+@method_decorator(login_required(login_url='user_login:login'), name='dispatch')
 class CustomLogoutView(auth_views.LogoutView):
     template_name = "user_login/registration/logged_out.html"
 
@@ -58,5 +59,4 @@ def index(request):
 
 
 def profile(request):
-    
     return render(request, 'user_login/perfil/user_data.html')
