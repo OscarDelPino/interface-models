@@ -3,7 +3,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 
 from .forms import CustomUserRegisterForm
 from .models import UserProfile
@@ -28,6 +29,7 @@ class CustomSignupView(generic.CreateView):
         print(response)
         return response
 
+method_decorator(csrf_protect, name='dispatch')
 class CustomLoginView(auth_views.LoginView):
     template_name = "user_login/registration/login.html"
     next_page = "user_login:profile"
