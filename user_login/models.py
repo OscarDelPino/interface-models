@@ -11,3 +11,10 @@ class UserProfile(models.Model):
     company = models.CharField(max_length=100, default='None')
     position = models.CharField(max_length=100, default='None')
     
+    def __str__(self):
+        return f"{self.user} from {self.company}"
+    
+    class Meta:
+        verbose_name = 'User Profile'
+        verbose_name_plural = 'User Profiles'
+        ordering = ['age']
