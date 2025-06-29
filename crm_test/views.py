@@ -3,15 +3,18 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse, HttpResponse
 import json
 
+from .utils import BaseVerification
+
 @csrf_exempt
 def whatsapp_webhook(request):
     print(f"Request body: {request.body}\n")
     if request.method == 'GET':
         # Verificación inicial de Facebook
-        verify_token = 'this_is_not_my_real_token_123'
-        if request.GET.get('hub.verify_token') == verify_token:
-            return HttpResponse(request.GET.get('hub.challenge'), status=200)
-        return JsonResponse({'error': 'Token invalido'}, status=403)
+        status = BaseVerification(request=request).verify_token()
+        if status is not None:
+            return HttpResponse(status['hub.challenge'], 
+                status=status['status']
+                )
 
     elif request.method == 'POST':
         data = json.loads(request.body)
